@@ -1,7 +1,5 @@
 FROM python:3.7-slim
 
-RUN echo 'Launching Docker Container'
-
 RUN pip install --no-cache --upgrade pip && \ 
     pip install --no-cache matplotlib nltk notebook pandas
 
@@ -21,4 +19,4 @@ USER ${USER}
 
 COPY README.md /home/${NB_USER}
 COPY index.ipynb /home/${NB_USER}
-COPY tweets/tweets_biden_small.csv /home/${NB_USER}/tweets
+COPY tweets_biden_small.csv /home/${NB_USER}
