@@ -20,3 +20,5 @@ USER ${USER}
 COPY README.md /home/${NB_USER}
 COPY index.ipynb /home/${NB_USER}
 COPY tweets_biden_small.csv /home/${NB_USER}
+COPY negative.txt /home/${NB_USER}
+COPY positive.txt /home/${NB_USER}
