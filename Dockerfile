@@ -1,7 +1,7 @@
 FROM python:3.7-slim
 
 RUN pip install --no-cache --upgrade pip && \ 
-    pip install --no-cache matplotlib notebook pandas wordcloud
+    pip install --no-cache matplotlib nltk notebook pandas wordcloud
 
 ARG NB_USER
 ARG NB_UID
