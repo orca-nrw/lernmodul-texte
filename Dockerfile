@@ -21,4 +21,5 @@ COPY README.md /home/${NB_USER}
 COPY index.ipynb /home/${NB_USER}
 COPY negative.txt /home/${NB_USER}
 COPY positive.txt /home/${NB_USER}
+COPY stop_words.txt /home/${NB_USER}
 COPY tweets.json.gz /home/${NB_USER}
