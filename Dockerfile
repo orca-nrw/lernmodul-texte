@@ -1,10 +1,13 @@
 FROM python:3.7-slim
 
-RUN pip install --no-cache --upgrade pip && \ 
-    pip install --no-cache ipywidgets matplotlib nltk notebook pandas wordcloud
+COPY ./requirements.txt /opt/app/requirements.txt
+WORKDIR /opt/app
 
-ARG NB_USER
-ARG NB_UID
+RUN pip install --no-cache --upgrade pip \
+  && pip install --no-cache -r requirements.txt
+
+ARG NB_USER=hsd
+ARG NB_UID=1000
 ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
@@ -15,9 +18,11 @@ RUN adduser --disabled-password \
     ${NB_USER}
 
 WORKDIR ${HOME}
-
-USER root
-COPY . ${HOME}
 RUN chown -R ${NB_UID} ${HOME}
+COPY . ${HOME}
+RUN rm -rf ./requirements.txt
+RUN rm -rf ./Dockerfile
 
 USER ${NB_USER}
+EXPOSE 8888
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
