@@ -1,0 +1,6 @@
+ipywidgets
+matplotlib
+nltk
+notebook
+pandas
+wordcloud
