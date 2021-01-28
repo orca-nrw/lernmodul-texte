@@ -6,6 +6,8 @@ WORKDIR /opt/app
 RUN pip install --no-cache --upgrade pip \
   && pip install --no-cache -r requirements.txt
 
+RUN pip install -i https://test.pypi.org/simple/ jupyternb-task-review
+
 ARG NB_USER=hsd
 ARG NB_UID=1000
 ENV USER ${NB_USER}
