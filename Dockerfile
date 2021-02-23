@@ -4,9 +4,7 @@ COPY ./requirements.txt /opt/app/requirements.txt
 WORKDIR /opt/app
 
 RUN pip install --no-cache --upgrade pip \
-  && pip install --no-cache -r requirements.txt \
-  && pip install -i https://test.pypi.org/simple/ jupyternb-task-review \
-  && pip install -i https://test.pypi.org/simple/ jupyternb-lti-connector
+  && pip install --no-cache -r requirements.txt
 
 ARG NB_USER=hsd
 ARG NB_UID=1000

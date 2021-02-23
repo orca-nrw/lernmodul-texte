@@ -1,4 +1,5 @@
 ipywidgets
+jupyternb-task-review
 matplotlib
 nltk
 notebook
