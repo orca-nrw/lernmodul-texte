@@ -1,7 +1,6 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-
 def plot_tweet_length_distribution(tweets_length):
     """Count tokens per tweet and plot their length distribution."""
 
