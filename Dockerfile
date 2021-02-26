@@ -25,4 +25,4 @@ RUN rm -rf ./Dockerfile
 
 USER ${NB_USER}
 EXPOSE 8888
-CMD ["jupyter", "notebook", "--config=./.jupyter/jupyter_notebook_config.py", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
