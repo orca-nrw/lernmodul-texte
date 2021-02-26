@@ -12,13 +12,15 @@ ENV USER ${NB_USER}
 ENV NB_UID ${NB_UID}
 ENV HOME /home/${NB_USER}
 
-RUN echo "$PWD"
-RUN echo "c.NotebookApp.max_buffer_size = 1073741824" >> ../../etc/jupyter/jupyter_notebook_config.py
-
 RUN adduser --disabled-password \
   --gecos "Default user" \
   --uid ${NB_UID} \
   ${NB_USER}
+
+WORKDIR /etc/jupyter
+RUN cat jupyter_notebook_config.py
+RUN echo "c.NotebookApp.max_buffer_size = 1073741824" >> jupyter_notebook_config.py
+RUN cat jupyter_notebook_config.py
 
 WORKDIR ${HOME}
 RUN chown -R ${NB_UID} ${HOME}
