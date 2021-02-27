@@ -42,7 +42,7 @@ def format_vocabulary(vocab):
     return vocab
 
 
-def replace_emojis(tweets):
+def process_emojis(tweets):
 
     positive_emojis = [r'🙂']
     for emoji in positive_emojis:
@@ -55,7 +55,7 @@ def replace_emojis(tweets):
     return tweets
 
 
-def replace_symbols(tweets):
+def process_strings(tweets):
 
     expressions = [
         r'@\S+',  # Find username
@@ -68,7 +68,7 @@ def replace_symbols(tweets):
     return tweets
 
 
-def replace_rest(tweets):
+def process_symbols(tweets):
 
     expression = '[^a-zA-ZäöüßÄÖÜ\s]'
 
