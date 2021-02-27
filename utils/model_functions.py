@@ -31,7 +31,7 @@ def supervised_classifier(tweets, tweets_copy, nbclassifier, labels):
             positive += 1
 
         print('%i\t%s\t%s\t%s\t%.100s' % (tweet.Index, tweet.Label, prediction,
-                                          delta, tweets_copy.iloc[tweet.Index]))
+                                          delta, tweets_copy.iloc[tweet.Index].replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
     vf.plot_pie([negative, positive], labels=labels)
@@ -65,7 +65,7 @@ def unsupervised_classifier(tweets, tweets_copy, kmclusterer, labels):
             delta = ' '
 
         print('%i\t%s\t%s\t%s\t%.100s' % (tweet.Index, tweet.Label, cluster,
-                                          delta, tweets_copy.iloc[tweet.Index]))
+                                          delta, tweets_copy.iloc[tweet.Index].replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
     vf.plot_pie([negative, positive], labels=labels)
