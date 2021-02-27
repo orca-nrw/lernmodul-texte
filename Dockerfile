@@ -17,10 +17,6 @@ RUN adduser --disabled-password \
   --uid ${NB_UID} \
   ${NB_USER}
 
-WORKDIR /etc/jupyter
-RUN chown -R ${NB_UID} /etc/jupyter
-RUN echo "c.NotebookApp.max_buffer_sizeInt=1073741824" >> jupyter_notebook_config.py
-
 WORKDIR ${HOME}
 RUN chown -R ${NB_UID} ${HOME}
 COPY . ${HOME}
@@ -29,4 +25,4 @@ RUN rm -rf ./Dockerfile
 
 USER ${NB_USER}
 EXPOSE 8888
-CMD ["jupyter", "notebook", "--NotebookApp.max_buffer_size=4294967296" "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "notebook", "--NotebookApp.max_buffer_size=4294967296", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
