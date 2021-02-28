@@ -1,5 +1,13 @@
 import numpy as np
 import matplotlib.pyplot as plt
+import pandas as pd
+
+
+def plot_tweet_year(twitter):
+    twitter['year'] = pd.to_datetime(twitter['created_at']).dt.year
+    # twitter.drop(['created_at', 'recorded_at'], axis=1, inplace=True)
+    twitter['year'].value_counts().plot(kind='bar', title='Tweets created')
+    return twitter
 
 
 def plot_tweet_length_distribution(tweets_length):
