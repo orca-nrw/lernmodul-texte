@@ -42,7 +42,7 @@ def plot_image(image, title):
     plt.show()
 
 
-def plot_pie(inputs, labels):
+def plot_pie(inputs, labels, title):
     plt.pie(inputs, labels=labels, autopct='%1.1f%%')
-    plt.title('Stimmungsbild')
+    plt.title(title)
     plt.show()

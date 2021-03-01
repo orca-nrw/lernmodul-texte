@@ -19,11 +19,6 @@ def supervised_classifier(tweets, nbclassifier, labels):
 
         prediction = nbclassifier.classify(featurize(tweet.Token))
 
-        if prediction == 'negativ':
-            negative += 1
-        else:
-            positive += 1
-
         if tweet.Label != prediction:
             error += 1
 
@@ -31,7 +26,6 @@ def supervised_classifier(tweets, nbclassifier, labels):
                                           (tweet.Label == prediction), tweet.Text.replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
-    vf.plot_pie([negative, positive], labels=labels)
 
 
 def unsupervised_classifier(tweets, kmclusterer, labels):
@@ -46,12 +40,6 @@ def unsupervised_classifier(tweets, kmclusterer, labels):
 
         prediction = kmclusterer.classify(tweet.Vector)
 
-        if prediction == 0:
-            negative += 1
-
-        else:
-            positive += 1
-
         if tweet.Label != labels[prediction]:
             error += 1
 
@@ -59,4 +47,3 @@ def unsupervised_classifier(tweets, kmclusterer, labels):
                                           (tweet.Label == labels[prediction]), tweet.Text.replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
-    vf.plot_pie([negative, positive], labels=labels)
