@@ -1,0 +1,8 @@
+ipywidgets
+jupyter-resource-usage
+jupyternb-task-review
+matplotlib
+nltk
+notebook
+pandas
+wordcloud
