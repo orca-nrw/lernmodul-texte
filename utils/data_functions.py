@@ -17,13 +17,13 @@ def load_json():
 def load_stop_words():
     """Load stop words as DataFrame"""
 
-    return pd.read_csv('./data/vocab/stop_words.txt', names=['Wort'])
+    return pd.read_csv('./data/vocabulary/stop_words.txt', names=['Wort'])
 
 
 def load_vocabulary(sentiment):
     """Load vocabulary as DataFrame"""
 
-    vocabulary = pd.read_csv('./data/vocab/' + sentiment + 'e_words.txt', lineterminator='\n',
+    vocabulary = pd.read_csv('./data/vocabulary/' + sentiment + 'e_words.txt', lineterminator='\n',
                              sep='\t', header=0, names=['Wort', 'Wert', 'Deklination'])
     vocabulary['Stimmung'] = sentiment
     return vocabulary
