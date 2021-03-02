@@ -4,7 +4,7 @@ import pandas as pd
 
 
 def load_json():
-    """Load JSON"""
+    """Load JSON as list"""
 
     files = []  # JSON
     for f in glob.glob("./data/tweets/*.json"):
@@ -15,39 +15,42 @@ def load_json():
 
 
 def load_stop_words():
-    """Load stop words"""
+    """Load stop words as DataFrame"""
+
     return pd.read_csv('./data/vocab/stop_words.txt', names=['Wort'])
 
 
 def load_vocabulary(sentiment):
-    """Load vocabulary"""
+    """Load vocabulary as DataFrame"""
 
-    vocab = pd.read_csv('./data/vocab/' + sentiment + 'e_words.txt', lineterminator='\n',
-                        sep='\t', header=0, names=['Wort', 'Wert', 'Deklination'])
-    vocab['Stimmung'] = sentiment
-    return vocab
+    vocabulary = pd.read_csv('./data/vocab/' + sentiment + 'e_words.txt', lineterminator='\n',
+                             sep='\t', header=0, names=['Wort', 'Wert', 'Deklination'])
+    vocabulary['Stimmung'] = sentiment
+    return vocabulary
 
 
-def format_vocabulary(vocab):
+def format_vocabulary(vocabulary):
     """Format vocabulary"""
 
-    vocab[['Wort', 'Typ']] = vocab['Wort'].str.split('|', 1, expand=True)
-    vocab['Deklination'] = vocab['Deklination'].replace(regex={r'\r': ''})
-    vocab['Merged'] = vocab['Wort'] + ',' + vocab['Deklination']
-    vocab['Merged'] = vocab['Merged'].str.split(',')
-    vocab = vocab.explode('Merged')
-    vocab = vocab.sort_values('Wort').reset_index(drop=True)
-    vocab = vocab.rename(columns={'Wort': 'Stamm', 'Merged': 'Wort'})
-    vocab = vocab.drop(['Deklination'], axis=1)
+    vocabulary[['Wort', 'Typ']] = vocabulary['Wort'].str.split(
+        '|', 1, expand=True)
+    vocabulary['Deklination'] = vocabulary['Deklination'].replace(regex={
+                                                                  r'\r': ''})
+    vocabulary['Merged'] = vocabulary['Wort'] + ',' + vocabulary['Deklination']
+    vocabulary['Merged'] = vocabulary['Merged'].str.split(',')
+    vocabulary = vocabulary.explode('Merged')
+    vocabulary = vocabulary.sort_values('Wort').reset_index(drop=True)
+    vocabulary = vocabulary.rename(columns={'Wort': 'Stamm', 'Merged': 'Wort'})
+    vocabulary = vocabulary.drop(['Deklination'], axis=1)
 
-    return vocab
+    return vocabulary
 
 
-def filter_vocabulary(vocab, sentiment, word):
-    """Filter vocabulary"""
+def filter_vocabulary(vocabulary, sentiment, word):
+    """Filter vocabulary based on sentiment and word type"""
 
-    nouns = vocab[(vocab['Stimmung'] == sentiment) & (
-        vocab['Typ'] == word)]
+    nouns = vocabulary[(vocabulary['Stimmung'] == sentiment) & (
+        vocabulary['Typ'] == word)]
 
     if sentiment == 'negativ':
         return pd.Series(nouns.Wert.values * (-100), index=nouns.Stamm).to_dict()
@@ -57,7 +60,7 @@ def filter_vocabulary(vocab, sentiment, word):
 
 
 def process_emojis(tweets):
-    """Process emojis"""
+    """Process emojis based on sentiment"""
 
     positive_emojis = [r'🙂']
     for emoji in positive_emojis:
@@ -71,7 +74,7 @@ def process_emojis(tweets):
 
 
 def process_strings(tweets):
-    """Process strings"""
+    """Process strings based on regular expressions"""
 
     expressions = [
         r'@\S+',  # Find username
@@ -85,7 +88,7 @@ def process_strings(tweets):
 
 
 def process_symbols(tweets):
-    """Process symbols"""
+    """Process symbols based on regular expressions"""
 
     expression = '[^a-zA-ZäöüßÄÖÜ\s]'
 
