@@ -20,7 +20,7 @@ def classify_supervised_multiple(tweets, classifier, labels):
         if tweet.Label != prediction:
             error += 1
 
-        print('%i\t%s\t%s\t%s\t %.110s' % (tweet.Index, tweet.Label, prediction,
+        print('%i\t%s\t%s\t%s\t %.100s' % (tweet.Index, tweet.Label, prediction,
                                            (tweet.Label == prediction), tweet.Text.replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
@@ -39,7 +39,7 @@ def classify_unsupervised_multiple(tweets, classifier, labels):
         if tweet.Label != labels[prediction]:
             error += 1
 
-        print('%i\t%s\t%s\t%s\t %.110s' % (tweet.Index, tweet.Label, labels[prediction],
+        print('%i\t%s\t%s\t%s\t %.100s' % (tweet.Index, tweet.Label, labels[prediction],
                                            (tweet.Label == labels[prediction]), tweet.Text.replace('\n', '')))
 
     print('\nGenauigkeit:', 1 - error / tweets.shape[0])
