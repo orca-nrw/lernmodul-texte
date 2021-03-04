@@ -6,7 +6,7 @@ Dieses Lernmodul beschäftigt sich mit der Verarbeitung und Analyse von rohen Te
 
 [![myBinder](https://mybinder.org/badge_logo.svg)](https://mybinder.org/v2/git/https%3A%2F%2Fprojectbase.medien.hs-duesseldorf.de%2Feild.nrw-module%2Flernmodul-texte.git/master?filepath=index.ipynb)
 
-Dieses Lernmodul lässt sich über den Online-Dienst [myBinder](https://mybinder.org/v2/git/https%3A%2F%2Fprojectbase.medien.hs-duesseldorf.de%2Feild.nrw-module%2Flernmodul-texte.git/development?filepath=index.ipynb) innerhalb von zwei Minuten starten. 
+Dieses Lernmodul lässt sich über den Online-Dienst [myBinder](https://mybinder.org/v2/git/https%3A%2F%2Fprojectbase.medien.hs-duesseldorf.de%2Feild.nrw-module%2Flernmodul-texte.git/master?filepath=index.ipynb) innerhalb von zwei Minuten starten. 
 
 Alternativ lässt sich dieses Lernmodul lokal in einem Docker Container innerhalb von einer Minute über die folgenden Befehle ausführen:
 
