@@ -25,4 +25,4 @@ RUN rm -rf ./Dockerfile
 
 USER ${NB_USER}
 EXPOSE 8888
-CMD ["jupyter", "notebook", "--NotebookApp.max_buffer_size=4294967296", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]
+CMD ["jupyter", "notebook", "--port=8888", "--no-browser", "--ip=0.0.0.0", "--allow-root"]

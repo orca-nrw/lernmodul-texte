@@ -62,11 +62,11 @@ def filter_vocabulary(vocabulary, sentiment, word):
 def process_emojis(tweets):
     """Process emojis based on sentiment"""
 
-    positive_emojis = [r'🙂']
+    positive_emojis = [r'🙂', r'😊', r'😛']
     for emoji in positive_emojis:
         tweets.replace(regex={emoji: 'gut'}, inplace=True)
 
-    negative_emojis = [r'😟']
+    negative_emojis = [r'😟', r'😕', r'😩']
     for emoji in negative_emojis:
         tweets.replace(regex={emoji: 'schlecht'}, inplace=True)
 
@@ -79,7 +79,8 @@ def process_strings(tweets):
     expressions = [
         r'@\S+',  # Find username
         r'http\S+',  # Find URL
-        r'\n']  # Find new line
+        r'\n',  # Find new line
+    ]
 
     for expression in expressions:
         tweets.replace(regex={expression: ''}, inplace=True)
