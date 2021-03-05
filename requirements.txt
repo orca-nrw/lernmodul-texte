@@ -1,6 +1,6 @@
 ipywidgets
 jupyter-resource-usage
-jupyternb-task-review
+jupyternb-task-review==1.2.4
 matplotlib
 nltk
 notebook
