@@ -16,3 +16,9 @@ Alternativ lässt sich dieses Lernmodul lokal in einem Docker Container innerhal
 docker build -t lernmodul-texte .
 docker run -it -p 8888:8888 --name lernmodul-texte --rm lernmodul-texte
 ```
+
+### Über dieses Lernmodul
+
+Dieses Lernmodul wurde im Rahmen des EILD.nrw-Projektes an der Hochschule Düsseldorf erstellt, nähre Informationen unter [eild.nrw](https://eild.nrw). Das Lernmodul kann unter foldender [Lizenz](LICENSE) genutzt werden.
+
+![logos.jpg](https://github.com/orca-nrw/lm-database-with-python/raw/master/logos.jpg)
