@@ -1,3 +1,5 @@
+![EILD.nrw](https://github.com/orca-nrw/plsql-trainer/raw/main/app/src/img/Logo-mitSchrift-v2.png)
+
 # Lernmodul Texte
 
 Dieses Lernmodul beschäftigt sich mit der Verarbeitung und Analyse von rohen Textdaten, wie sie auf dem sozialen Netzwerk [Twitter](https://twitter.com) in Form von Tweets erzeugt werden. Im Zuge der Sentiment Analysis im Forschungsfeld des Natural Language Processing (NLP) klassifiziert ein Vorhersagemodell einen Tweet anhand seiner (negativen oder positiven) Stimmung. Über die Vorhersage mehrerer Tweets kann so ein Stimmungsbild der Tweets erzeugt werden, welches wiederum von nachfolgenden Entscheidermodellen berücksichtigt werden kann.
